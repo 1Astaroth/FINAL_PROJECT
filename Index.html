@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto Final - Basurero Clasificador Inteligente</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Segoe UI',Arial;
+background:#f3f8fb;
+color:#333;
+line-height:1.7;
+}
+
+#header{
+background:linear-gradient(135deg,#0ea5e9,#0284c7);
+color:white;
+padding:2.5rem;
+text-align:center;
+}
+
+.header-content h1{
+font-size:2.5rem;
+font-weight:bold;
+}
+
+.header-content p{
+font-size:1.1rem;
+margin-top:10px;
+}
+
+.main-container{
+max-width:1300px;
+margin:auto;
+padding:2rem;
+}
+
+.content{
+background:white;
+padding:2.5rem;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.etapa-header{
+background:#0284c7;
+color:white;
+padding:1.3rem;
+border-radius:12px;
+margin:2rem 0;
+text-align:center;
+}
+
+.intro-box{
+background:#e0f2fe;
+padding:2rem;
+border-left:7px solid #0284c7;
+border-radius:12px;
+margin-bottom:2rem;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+.card{
+background:#fff;
+padding:25px;
+border-radius:15px;
+border:1px solid #e5e7eb;
+box-shadow:0 8px 25px rgba(0,0,0,0.12);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card h3{
+color:#0369a1;
+margin-bottom:10px;
+}
+
+.multi-img{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:10px;
+margin-top:15px;
+}
+
+.multi-img img{
+width:100%;
+height:210px;
+object-fit:cover;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+}
+
+.multi-img img:hover{
+transform:scale(1.03);
+}
+
+.btn-download{
+display:inline-block;
+margin-top:15px;
+padding:10px 16px;
+background:#0284c7;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn-download:hover{
+background:#0369a1;
+}
+
+.btn-disabled{
+display:inline-block;
+margin-top:15px;
+padding:10px 16px;
+background:#94a3b8;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+cursor:not-allowed;
+opacity:0.8;
+}
+
+.notice-box{
+background:#fef9c3;
+padding:1.5rem;
+border-left:7px solid #facc15;
+margin-top:2rem;
+border-radius:12px;
+color:#713f12;
+}
+
+.highlight-text{
+background:#e0f2fe;
+padding:1.5rem;
+border-left:7px solid #0284c7;
+margin-top:2rem;
+border-radius:12px;
+}
+
+video{
+width:100%;
+border-radius:12px;
+margin-top:15px;
+}
+
+.modal{
+display:none;
+position:fixed;
+z-index:999;
+padding-top:50px;
+left:0;
+top:0;
+width:100%;
+height:100%;
+overflow:auto;
+background:rgba(0,0,0,0.9);
+}
+
+.modal-content{
+margin:auto;
+display:block;
+width:80%;
+max-width:1000px;
+border-radius:15px;
+animation:zoom .3s;
+}
+
+@keyframes zoom{
+from{transform:scale(0.7);}
+to{transform:scale(1);}
+}
+
+.close{
+position:absolute;
+top:20px;
+right:35px;
+color:white;
+font-size:40px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.close:hover{
+color:#0ea5e9;
+}
+
+@media(max-width:768px){
+#header{
+padding:1.5rem;
+}
+
+.header-content h1{
+font-size:1.8rem;
+}
+
+.content{
+padding:1rem;
+}
+
+.card{
+padding:18px;
+}
+
+.multi-img img{
+height:160px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header id="header">
+<div class="header-content">
+<h1>Proyecto Final: Basurero Clasificador Inteligente</h1>
+<p>Diseño, fabricación y automatización de un sistema para clasificar residuos</p>
+</div>
+</header>
+
+<div class="main-container">
+<div class="content">
+
+<div class="intro-box">
+<h2>♻️ Introducción</h2>
+<p>
+El presente proyecto final consiste en el diseño y fabricación de un basurero clasificador inteligente, desarrollado con el objetivo de facilitar la separación de residuos de manera automática. La propuesta busca aportar a una mejor gestión de la basura, reduciendo errores al momento de clasificar los desechos y promoviendo prácticas más responsables con el ambiente.
+</p>
+<br>
+<p>
+Para su desarrollo se integraron herramientas de diseño, electrónica, fabricación digital y análisis de requerimientos. El sistema funciona mediante un mecanismo accionado por un servomotor, el cual permite mover la parte central del basurero para dirigir el residuo hacia el contenedor correspondiente.
+</p>
+</div>
+
+<div class="etapa-header">
+<h2>📋 Análisis QFD</h2>
+</div>
+
+<div class="cards">
+<div class="card">
+<h3>Tabla QFD</h3>
+<p>
+La primera etapa del proyecto consistió en realizar una tabla QFD, también conocida como Casa de la Calidad. Esta herramienta permitió analizar las necesidades del usuario y relacionarlas con las características técnicas que debía tener el producto.
+</p>
+<div class="multi-img">
+<img src="IMAGENES/QFD1.jpeg">
+<img src="IMAGENES/QFD2.jpg">
+<img src="IMAGENES/QDF3.jpg">
+</div>
+</div>
+</div>
+
+<div class="etapa-header">
+<h2>💡 Ideación y Bocetos</h2>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Generación de Ideas</h3>
+<p>
+Después del análisis QFD, el grupo realizó una lluvia de ideas para definir cómo sería posible construir el basurero clasificador inteligente. En esta etapa se analizaron diferentes alternativas de diseño, considerando aspectos como el tamaño del prototipo, la ubicación de los contenedores, el movimiento de la parte central, la facilidad de uso y la integración de los componentes electrónicos.
+</p>
+<br>
+<p>
+Esta fase permitió transformar una idea inicial en una propuesta más clara y funcional. Se buscó que el basurero no solo cumpliera con la clasificación de residuos, sino que también tuviera una estructura práctica, ordenada y fácil de comprender para el usuario.
+</p>
+<div class="multi-img">
+<img src="IMAGENES/Ideas2.jpeg">
+<img src="IMAGENES/Ideas1.jpeg">
+</div>
+</div>
+
+<div class="card">
+<h3>Boceto Seleccionado</h3>
+<p>
+Luego de comparar las propuestas planteadas, se escogió el boceto que mejor se adaptaba al funcionamiento esperado del sistema. El diseño seleccionado permite ubicar los contenedores alrededor de un mecanismo central móvil, facilitando que la basura sea dirigida hacia el recipiente correspondiente.
+</p>
+<div class="multi-img">
+<img src="IMAGENES/Bocetofinal.jpeg">
+</div>
+</div>
+
+</div>
+
+<div class="etapa-header">
+<h2>👥 Organización del Equipo</h2>
+</div>
+
+<div class="cards">
+<div class="card">
+<h3>Distribución de Actividades</h3>
+<p>
+Para desarrollar el proyecto de manera más eficiente, el grupo se dividió en dos subgrupos de trabajo. Kerly Morales y Camila Barros se encargaron del diseño del basurero, el modelado de los contenedores y la fabricación de las piezas mediante impresión 3D.
+</p>
+<br>
+<p>
+Por otro lado, Jairo Andrade y Domenica Peña se enfocaron en la parte electrónica, el funcionamiento del sistema, el control del servomotor, el diseño de la placa en KiCad y la elaboración de las pistas de cobre. Esta división permitió avanzar de forma organizada, integrando posteriormente ambas partes en un solo prototipo funcional.
+</p>
+</div>
+</div>
+
+<div class="etapa-header">
+<h2>🧩 Diseño e Impresión 3D</h2>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Diseño de Contenedores</h3>
+<p>
+El diseño del basurero se desarrolló considerando la ubicación de los contenedores, el espacio para la parte móvil central y la integración de los componentes electrónicos. Esta etapa permitió definir la forma final del prototipo.
+</p>
+<div class="multi-img">
+<img src="IMAGENES/Diseño1.jpeg">
+<img src="IMAGENES/Diseño2.jpeg">
+<img src="IMAGENES/Diseño3.jpeg">
+<img src="IMAGENES/Diseño4.jpeg">
+</div>
+</div>
+
+<div class="card">
+<h3>Impresión 3D</h3>
+<p>
+Una vez definidos los diseños, se procedió a imprimir los contenedores y las piezas principales del prototipo. La impresión 3D permitió fabricar componentes personalizados y adaptados al funcionamiento del sistema.
+</p>
+<div class="multi-img">
+<img src="IMAGENES/Impresion1.jpeg">
+<img src="IMAGENES/Impresion2.jpeg">
+</div>
+</div>
+
+</div>
+
+<div class="etapa-header">
+<h2>⚙️ Sistema Electrónico y Funcionamiento</h2>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Clasificación Automática de Residuos</h3>
+<p>
+El sistema electrónico representa una de las partes más importantes del proyecto, ya que permite que el basurero funcione de manera automática y no dependa únicamente de la intervención del usuario. Su propósito principal es controlar el movimiento de la parte central del prototipo para dirigir cada residuo hacia el contenedor correspondiente.
+</p>
+<br>
+<p>
+El funcionamiento se basa en un mecanismo accionado por un servomotor. Cuando el sistema detecta el tipo de basura, el servomotor gira hasta una posición determinada, alineando la parte central del basurero con el recipiente adecuado. De esta manera, el residuo cae directamente en el contenedor correcto, haciendo que el proceso de clasificación sea más práctico, ordenado e innovador.
+</p>
+<br>
+<p>
+La parte central del basurero actúa como un canal de distribución, mientras que el servomotor se encarga de posicionarla de acuerdo con la clasificación requerida. Esta integración entre diseño mecánico y control electrónico permite que el prototipo tenga un funcionamiento dinámico y llamativo, demostrando cómo la automatización puede aplicarse a soluciones cotidianas relacionadas con el cuidado ambiental.
+</p>
+<br>
+<p>
+Durante el desarrollo también se realizaron pruebas de movimiento, calibración de ángulos y verificación del comportamiento del sistema. Estas pruebas fueron necesarias para asegurar que el mecanismo respondiera correctamente, que el giro del servomotor fuera preciso y que el residuo pudiera caer en el lugar indicado sin obstrucciones.
+</p>
+<br>
+<p>
+Gracias a este sistema, el basurero clasificador inteligente se convierte en una propuesta funcional y moderna, capaz de unir tecnología, diseño y conciencia ambiental en un solo prototipo.
+</p>
+
+<div class="multi-img">
+<img src="IMAGENES/electro1.jpeg">
+<img src="IMAGENES/electro2.jpeg">
+</div>
+</div>
+
+</div>
+
+<div class="etapa-header">
+<h2>🔌 Diseño de Placa en KiCad</h2>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Esquemático y PCB</h3>
+<p>
+También se realizaron los esquemas de la placa electrónica en KiCad. Esta etapa permitió organizar las conexiones del circuito, ubicar los componentes y preparar el diseño para su posterior fabricación.
+</p>
+<div class="multi-img">
+<img src="IMAGENES/Kikat1.jpeg">
+<img src="IMAGENES/Kikat2.jpeg">
+<img src="IMAGENES/Kikat3.jpeg">
+</div>
+</div>
+
+<div class="card">
+<h3>Fabricación de Pistas</h3>
+<p>
+Luego del diseño de la placa, se procedió a realizar las pistas de cobre mediante una máquina de desbaste con láser. Este proceso permitió fabricar la placa física para conectar los componentes electrónicos del sistema.
+</p>
+<div class="multi-img">
+<img src="IMAGENES/Placa1.jpeg">
+<img src="IMAGENES/Placa2.jpeg">
+</div>
+</div>
+
+</div>
+
+<div class="etapa-header">
+<h2>🎥 Video del Proceso</h2>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Explicación del Proyecto</h3>
+<p>
+En esta sección se presenta un video donde se explica el proceso completo del proyecto, desde la etapa de análisis QFD, bocetos, diseño, impresión 3D, desarrollo electrónico, fabricación de la placa y pruebas de funcionamiento del basurero clasificador.
+</p>
+
+<video controls>
+<source src="IMAGENES/Proceso.mp4" type="video/mp4">
+Tu navegador no soporta videos HTML5.
+</video>
+</div>
+
+</div>
+
+<div class="etapa-header">
+<h2>📂 Descargables</h2>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>QFD</h3>
+<p>Documento de Excel del QFD.</p>
+<a href="DESCARGABLES/QFD_BASURERO.xlsx" class="btn-download">
+<i class="fas fa-download"></i> Descargar QFD
+</a>
+</div>
+
+<div class="card">
+<h3>Archivos de Diseño 3D</h3>
+<p>Modelos utilizados para la impresión de los contenedores.</p>
+<a href="DESCARGABLES/Modelos_3D.zip" class="btn-download">
+<i class="fas fa-download"></i> Descargar Modelos
+</a>
+</div>
+
+<div class="card">
+<h3>Archivos KiCad</h3>
+<p>Esquemático y diseño de la placa electrónica.</p>
+<a href="#" class="btn-disabled">
+<i class="fas fa-clock"></i> Disponible pronto
+</a>
+</div>
+
+<div class="card">
+<h3>Código del Sistema</h3>
+<p>Código utilizado para controlar el servomotor y el sistema de clasificación.</p>
+<a href="#" class="btn-disabled">
+<i class="fas fa-clock"></i> Disponible pronto
+</a>
+</div>
+
+</div>
+
+<div class="notice-box">
+<strong>⚠️ Aviso:</strong>
+<br><br>
+El diseño electrónico en KiCad y el código de programación aún se encuentran en proceso de documentación, por lo que serán publicados en una futura actualización de este proyecto.
+</div>
+
+<div class="highlight-text">
+<strong>Conclusión:</strong>
+<br><br>
+El proyecto permitió integrar diseño, fabricación digital y electrónica en el desarrollo de un basurero clasificador inteligente. A través del análisis QFD se definieron las características principales del producto, mientras que los bocetos y diseños permitieron seleccionar una propuesta funcional.
+<br><br>
+La división del trabajo facilitó el avance del proyecto, permitiendo que una parte del equipo se enfocara en el diseño e impresión de los contenedores y otra en el sistema electrónico. Finalmente, el uso de un servomotor, el diseño de la placa en KiCad y la fabricación de pistas de cobre permitieron construir un prototipo capaz de orientar la basura hacia el contenedor correspondiente.
+</div>
+
+</div>
+</div>
+
+<div id="imageModal" class="modal">
+<span class="close">&times;</span>
+<img class="modal-content" id="imgExpanded">
+</div>
+
+<script>
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("imgExpanded");
+const images = document.querySelectorAll("img");
+const closeBtn = document.querySelector(".close");
+
+images.forEach(img => {
+img.addEventListener("click", function(){
+modal.style.display = "block";
+modalImg.src = this.src;
+});
+});
+
+closeBtn.onclick = function(){
+modal.style.display = "none";
+}
+
+modal.onclick = function(e){
+if(e.target !== modalImg){
+modal.style.display = "none";
+}
+}
+</script>
+
+</body>
+</html>
